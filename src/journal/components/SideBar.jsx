@@ -11,25 +11,28 @@ import {
     Toolbar,
     Typography
 } from '@mui/material';
-import {TurnedInNot} from '@mui/icons-material';
+import { TurnedInNot } from '@mui/icons-material';
+import { useSelector } from 'react-redux';
 
-export const SideBar = ({drawerWidth = 240}) => {
+export const SideBar = ({ drawerWidth = 240 }) => {
+    const { displayName } = useSelector(state => state.auth);
+
     return (
         <Box
             component="nav"
-            sx={{width: {sm: drawerWidth}, flexShrink: {sm: 0}}}
+            sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
         >
             <Drawer
                 variant="permanent"
                 open
                 sx={{
-                    display: {sx: 'block'},
-                    '& .MuiDrawer-paper': {boxSizing: 'border-box', width: drawerWidth}
+                    display: { sx: 'block' },
+                    '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth }
                 }}
             >
                 <Toolbar>
                     <Typography variant='h6' noWrap component="div">
-                        Rigo Galicia
+                        {displayName}
                     </Typography>
                 </Toolbar>
                 <Divider />
@@ -39,7 +42,7 @@ export const SideBar = ({drawerWidth = 240}) => {
                             <ListItem key={text} disablePadding>
                                 <ListItemButton>
                                     <ListItemIcon>
-                                        <TurnedInNot/>
+                                        <TurnedInNot />
                                     </ListItemIcon>
                                     <Grid container>
                                         <ListItemText primary={text} />

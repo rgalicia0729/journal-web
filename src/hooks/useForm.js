@@ -8,6 +8,10 @@ export const useForm = (initialValue = {}, formValidations = {}) => {
         createValidators();
     }, [formState]);
 
+    useEffect(() => {
+        setFormState(initialValue);
+    }, [initialValue]);
+
     const onFormChange = ({ target }) => {
         const { name, value } = target;
 
